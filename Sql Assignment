@@ -1,0 +1,51 @@
+Q1:-
+
+CREATE DATABASE ATS;
+
+use ATS;
+CREATE TABLE AI_Tools(ID int, Teaching varchar(25));
+
+use ATS;
+ INSERT INTO AI_Tools VALUES (1,"DS"),
+                        (1,"Tableus"),
+                        (1,"SQL"),
+                        (2,"R"),
+                        (2,"Power BI"),
+                        (1,"Python");
+  SELECT * FROM AI_Tools;
+
+
+
+
+
+Q2:- 
+    
+ CREATE DATABASE Ecommerce_Website;
+
+use Ecommerce_Website;
+CREATE TABLE Product_Info(Product_ID int, Product_name varchar(35));
+
+use Ecommerce_Website;
+INSERT INTO Product_Info VALUES (1001,"Blog"),
+                                (1002,"Youtube"),
+                                (1003,"Education");
+SELECT * FROM  Product_Info;
+
+use Ecommerce_Website;
+CREATE TABLE Product_Info_Likes(User_ID int, Product_ID int, Likes_date DATE );
+
+
+use Ecommerce_Website;
+INSERT INTO Product_Info_Likes VALUES (1,1001,'19-08-2023'),
+                                      (2,1003,'18-08-2023');
+SELECT * FROM Product_Info_Likes;
+
+SELECT Product_Id
+FROM (
+SELECT Product_Id FROM  Product_Info
+UNION ALL
+SELECT Product_Id FROM  Product_Info_Likes
+)newTable
+GROUP BY Product_Id
+HAVING count(*) = 1
+ORDER BY Product_Id;   
